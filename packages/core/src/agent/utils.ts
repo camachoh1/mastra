@@ -40,14 +40,11 @@ export async function tryStreamWithJsonFallback<
       text: 'structuredOutput is required to use tryStreamWithJsonFallback',
     });
   }
-
-  try {
-    return await agent.stream(prompt, options);
-  } catch (error) {
-    console.warn('Error in tryStreamWithJsonFallback. Attempting fallback.', error);
-    return await agent.stream(prompt, {
-      ...options,
-      structuredOutput: { ...options.structuredOutput, jsonPromptInjection: true },
-    });
-  }
+  return await agent.stream(prompt, {
+    ...options,
+    structuredOutput: {
+      ...options.structuredOutput,
+      jsonPromptInjection: true,
+    },
+  });
 }
