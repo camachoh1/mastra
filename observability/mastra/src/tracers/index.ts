@@ -1,7 +1,6 @@
 /**
- * Mastra AI Tracers
+ * Mastra AI Tracers - Implementation
  */
 
 export * from './base';
 export * from './default';
-export * from './no-op';
